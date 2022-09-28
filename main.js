@@ -41,7 +41,7 @@ client.on('message', message => {
         //let hours = timeStr[3], minutes = timeStr[5], seconds = timeStr[8];
 
         const embed = new Discord.MessageEmbed()
-            .setTitle('Mensaje de)
+            .setTitle('Mensaje de')
              embed.addField(user)
              embed.addField(result)
             
