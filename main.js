@@ -26,6 +26,7 @@ client.on('message', message => {
         console.log(message);
         
         var mvpStr = message.content;
+        var user = message.username;
         var result = mvpStr.split('\n');
         console.log(mvpStr);
         console.log(result);
@@ -39,7 +40,7 @@ client.on('message', message => {
         //let hours = timeStr[3], minutes = timeStr[5], seconds = timeStr[8];
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(result[0])
+            .setTitle(user[0])
            
             for(i = 2; i < result.length; i+=2){
                 embed.addField(result[i], result[i+1])
