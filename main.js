@@ -27,7 +27,6 @@ client.on('message', message => {
 
         var mvpStr = message.content;
         console.log(mvpStr);
-        console.log(result);
 
     }else{
         console.log('did not send');
