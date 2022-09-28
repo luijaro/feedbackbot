@@ -1,20 +1,5 @@
-const Discord = require('discord.js');
-
-//import keywords
-const { prefix, token, channelName, originChannel } = require('./config.json');
-const client = new Discord.Client();
-
-//embedded message
-const { Client, MessageEmbed } = require('discord.js');
-
-//ready check
-client.once('ready', () => {
-    console.log('ready');
-});
-
-
-
-//listen for any message
+const Discord = require("discord.js");
+const Client = new Discord.Client();
 
 Client.on("message", (message) => {
     if (message.author.bot) return false; // If the message is sent by a bot, we ignore it.
@@ -24,6 +9,4 @@ Client.on("message", (message) => {
     };
 });
 
-
-//don't touch this
-client.login(token);
+Client.login("NzQ0NzY1NTY3MDQ2NTE2Nzg2.GoKXzo.kNxG_kXo7Vg3Olb0Lya1Kfea6VxX72Rx39Ys1o");
