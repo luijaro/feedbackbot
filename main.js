@@ -34,7 +34,7 @@ client.on('message', message => {
         //find channel to send message to
         const channel = client.channels.cache.find(channel => channel.name === channelName)
 
-        let timeStr = result[1].split(' ');
+        let timeStr = result[1];
         console.log(timeStr);
         let hours = timeStr[3], minutes = timeStr[5], seconds = timeStr[8];
 
