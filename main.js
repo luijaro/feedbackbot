@@ -26,27 +26,8 @@ client.on('message', message => {
         //console.log(message);
 
         var mvpStr = message.content;
-        var result = mvpStr.split('\n');
         console.log(mvpStr);
         console.log(result);
-
-
-        //find channel to send message to
-        const channel = client.channels.cache.find(channel => channel.name === channelName)
-
-        let timeStr = result[1];
-        console.log(timeStr);
-        let hours = timeStr[3], minutes = timeStr[5], seconds = timeStr[8];
-
-        const embed = new Discord.MessageEmbed()
-            .setTitle(result[0])
-            .setDescription(`\`\`\`fix\nNext MVP in ${hours} hours, ${minutes} minutes, and ${seconds} seconds\`\`\``)
-
-            for(i = 2; i < result.length; i+=2){
-                embed.addField(result[i], result[i+1])
-            }
-
-        channel.send(embed);
 
     }else{
         console.log('did not send');
