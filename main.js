@@ -15,15 +15,15 @@ client.once('ready', () => {
 
 
 //listen for any message
-client.on('message', message => {
 
-    const origin = client.channels.cache.find(origin => origin.name === originChannel)
-
-    console.log('Seen');
-    console.log('${message.content}');
-
-    
+Client.on("message", (message) => {
+    if (message.author.bot) return false; // If the message is sent by a bot, we ignore it.
+    if (message.channel.id == "502669189606146058") { // Checking if the message is sent in a certain channel.
+        let Channel = message.client.channels.get("502669189606146058"); // Getting the channel object.
+        console.log(`New message in #${Channel.name} from ${message.author.tag}: ${message.content}`);
+    };
 });
+
 
 //don't touch this
 client.login(token);
