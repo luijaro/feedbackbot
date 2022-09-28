@@ -24,10 +24,7 @@ client.on('message', message => {
     var mvpStr = message.content;
     console.log(mvpStr);
 
-    }else{
-        console.log('did not send');
-    }
-
+    
 });
 
 //don't touch this
