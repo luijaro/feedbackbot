@@ -26,7 +26,7 @@ client.on('message', message => {
         console.log(message);
         
         var mvpStr = message.content;
-        var user = message.username;
+        var user = message.author;
         var result = mvpStr.split('\n');
         console.log(mvpStr);
         console.log(user);
@@ -42,6 +42,7 @@ client.on('message', message => {
 
         const embed = new Discord.MessageEmbed()
             .setTitle(result[0])
+            embed.addField(user)
            
             for(i = 2; i < result.length; i+=2){
                 embed.addField(result[i], result[i+1])
