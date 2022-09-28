@@ -26,7 +26,7 @@ client.on('message', message => {
         console.log(message);
         
         var mvpStr = message.content;
-        var user = message.username;
+        var user = message.author.name;
         var result = mvpStr.split('\n');
         console.log(mvpStr);
         console.log(user);
