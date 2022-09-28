@@ -41,12 +41,10 @@ client.on('message', message => {
         //let hours = timeStr[3], minutes = timeStr[5], seconds = timeStr[8];
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(result[0])
-           
-            for(i = 2; i < result.length; i+=2){
-                embed.addField(result[i], result[i+1])
-            }
-            embed.addField(user)
+            .setTitle('Mensaje de)
+             embed.addField(user)
+             embed.addField(result)
+            
         message.delete();
 
         channel.send(embed);
