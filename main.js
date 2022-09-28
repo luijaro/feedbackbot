@@ -51,7 +51,7 @@ client.on('message', message => {
     else{
         console.log('did not send');
     }
-    msg.delete();
+    message.delete();
 
 });
 
