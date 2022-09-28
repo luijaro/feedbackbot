@@ -23,7 +23,7 @@ client.on('message', message => {
     //condition for sending message
     if(!message.author.bot && origin === message.channel){
 
-        console.log(message);
+        //console.log(message);
 
         var mvpStr = message.content;
         var result = mvpStr.split('\n');
