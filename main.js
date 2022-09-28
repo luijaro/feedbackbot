@@ -45,7 +45,7 @@ client.on('message', message => {
              embed.addField(user)
              embed.addField(result)
             
-       // message.delete();
+        message.delete();
 
         channel.send(embed);
 
