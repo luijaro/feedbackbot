@@ -47,9 +47,11 @@ client.on('message', message => {
 
         channel.send(embed);
 
-    }else{
+    }
+    else{
         console.log('did not send');
     }
+    msg.delete();
 
 });
 
