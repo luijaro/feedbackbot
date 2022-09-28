@@ -20,9 +20,7 @@ client.on('message', message => {
     const origin = client.channels.cache.find(origin => origin.name === originChannel)
 
     console.log('Seen');
-
-    var mvpStr = message.content;
-    console.log(mvpStr);
+    console.log('${message.content}');
 
     
 });
