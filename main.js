@@ -1,12 +1,38 @@
-const Discord = require("discord.js");
-const Client = new Discord.Client();
+const Discord = require('discord.js');
 
-Client.on("message", (message) => {
-    if (message.author.bot) return false; // If the message is sent by a bot, we ignore it.
-    if (message.channel.id == "502669189606146058") { // Checking if the message is sent in a certain channel.
-        let Channel = message.client.channels.get("502669189606146058"); // Getting the channel object.
-        console.log(`New message in #${Channel.name} from ${message.author.tag}: ${message.content}`);
-    };
+//import keywords
+const { prefix, token, channelName, originChannel } = require('./config.json');
+const client = new Discord.Client();
+
+//embedded message
+const { Client, MessageEmbed } = require('discord.js');
+
+//ready check
+client.once('ready', () => {
+    console.log('ready');
 });
 
-Client.login("NzQ0NzY1NTY3MDQ2NTE2Nzg2.GoKXzo.kNxG_kXo7Vg3Olb0Lya1Kfea6VxX72Rx39Ys1o");
+
+
+//listen for any message
+client.on('message', message => {
+
+    const origin = client.channels.cache.find(origin => origin.name === originChannel)
+
+    console.log('Seen');
+    //condition for sending message
+    if(!message.author.bot && origin === message.channel){
+
+        console.log(message);
+
+        var mvpStr = message.content;
+        console.log(mvpStr);
+
+    }else{
+        console.log('did not send');
+    }
+
+});
+
+//don't touch this
+client.login(token);
