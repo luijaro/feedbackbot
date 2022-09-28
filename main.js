@@ -20,6 +20,7 @@ client.on('message', message => {
     const origin = client.channels.cache.find(origin => origin.name === originChannel)
 
     console.log('Seen');
+    console.log(message);
     //condition for sending message
     if(!message.author.bot && message.content.startsWith("Upcoming MVPs") && origin === message.channel){
 
