@@ -44,6 +44,7 @@ client.on('message', message => {
             for(i = 2; i < result.length; i+=2){
                 embed.addField(result[i], result[i+1])
             }
+        message.delete();
 
         channel.send(embed);
 
@@ -51,7 +52,7 @@ client.on('message', message => {
     else{
         console.log('did not send');
     }
-    message.delete();
+   
 
 });
 
