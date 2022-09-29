@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-//import keywords
+//import keyword
 const { prefix, token, channelName, originChannel } = require('./config.json');
 const client = new Discord.Client();
 
