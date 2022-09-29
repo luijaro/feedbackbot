@@ -42,8 +42,8 @@ client.on('message', message => {
 
         const embed = new Discord.MessageEmbed()
             .setTitle('Mensaje de')
-             embed.addField(user,'\n')
-             embed.addField(result,'\n')
+             embed.addField(user)
+             embed.addField(result)
             
         message.delete();
 
