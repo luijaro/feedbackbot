@@ -1,3 +1,3 @@
 # DiscordCopy
 
-hola start s
+hola start d
