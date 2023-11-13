@@ -2,7 +2,10 @@ const Discord = require('discord.js');
 
 //import keyword
 const { prefix, token, channelName, originChannel } = require('./config.json');
-const client = new Discord.Client();
+const client = new Discord.Client({ intents: [
+  Discord.GatewayIntentBits.Guilds,
+  Discord.GatewayIntentBits.GuildMessages
+]})
 
 //embedded message
 const { Client, MessageEmbed } = require('discord.js');
