@@ -1,64 +1,57 @@
-const Discord = require('discord.js');
+// Require the necessary discord.js classes
+const { Client, Events, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+const { token, channelName, originChannel } = require('./config.json');
 
-//import keyword
-const { prefix, token, channelName, originChannel } = require('./config.json');
-const client = new Discord.Client({ intents: [
-  Discord.GatewayIntentBits.Guilds,
-  Discord.GatewayIntentBits.GuildMessages
-]})
+// Create a new client instance
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
-//embedded message
-const { Client, MessageEmbed } = require('discord.js');
 
-//ready check
-client.once('ready', () => {
-    console.log('ready');
+// When the client is ready, run this code (only once)
+// We use 'c' for the event parameter to keep it separate from the already defined 'client'
+client.once(Events.ClientReady, c => {
+	console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
+// listen for any message
+client.on(Events.MessageCreate, message => {
+	// eslint-disable-next-line no-shadow
+	const origin = client.channels.cache.find(origin => origin.name === originChannel);
+	// condition for sending message
+	if (!message.author.bot && origin === message.channel) {
+		console.log('MessageSeen');
+		console.log(message);
+
+		const messageContent = message.content;
+		const user = message.author.username;
+		console.log('Content');
+		console.log(messageContent);
+		console.log('User');
+		console.log(user);
 
 
-//listen for any message
-client.on('message', message => {
+		// find channel to send message to
+		// eslint-disable-next-line no-shadow
+		const channel = client.channels.cache.find(channel => channel.name === channelName);
 
-    const origin = client.channels.cache.find(origin => origin.name === originChannel)
+		// let timeStr = result[1].split(' ');
+		// console.log(timeStr);
+		// let hours = timeStr[3], minutes = timeStr[5], seconds = timeStr[8];
 
-    console.log('Seen');
-    //condition for sending message
-    if(!message.author.bot && origin === message.channel){
+		// eslint-disable-next-line no-undef
+		const embed = new EmbedBuilder();
+		embed.setTitle('Mensaje de ' + user);
+		embed.setDescription(messageContent);
 
-        console.log(message);
-        
-        var mvpStr = message.content;
-        var user = message.author.username;
-        var result = mvpStr.split('\n');
-        console.log(mvpStr);
-        console.log(user);
-        console.log(result);
+		message.delete();
 
+		channel.send({ content: '', embeds: [embed] });
 
-        //find channel to send message to
-        const channel = client.channels.cache.find(channel => channel.name === channelName)
+	}
+	else {
+		console.log('did not send');
+	}
 
-        //let timeStr = result[1].split(' ');
-        //console.log(timeStr);
-        //let hours = timeStr[3], minutes = timeStr[5], seconds = timeStr[8];
-
-        const embed = new Discord.MessageEmbed()
-            .setTitle('Mensaje de')
-             embed.addField('Nombre', user)
-             embed.addField('Mensaje', result)
-            
-        message.delete();
-
-        channel.send(embed);
-
-    }
-    else{
-        console.log('did not send');
-    }
-   
 
 });
-
-//don't touch this
+// Log in to Discord with your client's token
 client.login(token);
